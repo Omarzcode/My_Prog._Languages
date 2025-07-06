@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeConnect - User Registration</title>
+    <!-- A little bit of styling to make the form more readable -->
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4a4e69;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #4a4e69;
+            padding: 0 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Important for padding and width */
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        .inline-label {
+            display: inline-block;
+            font-weight: normal;
+        }
+        button {
+            background-color: #4a4e69;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button[type="reset"] {
+            background-color: #9a8c98;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Register for CodeConnect</h1>
+        <p style="text-align: center;">Join our community of developers! Fill out the form below to get started.</p>
+
+        <!-- Form starts here -->
+        <form action="success.html" method="POST" autocomplete="on">
+            
+            <!-- Fieldset 1: Groups personal information -->
+            <fieldset>
+                <legend>Personal Information</legend>
+
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="first_name" required placeholder="e.g., Jane" >
+
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="last_name" required placeholder="e.g., Doe">
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="user_email" required placeholder="you@example.com">
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="date_of_birth">
+
+                <label for="country">Country:</label>
+                <select id="country" name="user_country">
+                    <optgroup label="Africa">
+                        <option value="egypt" selected>Egypt</option>
+                        <option value="nigeria">Nigeria</option>
+                    </optgroup>
+                    <optgroup label="Europe">
+                        <option value="uk">United Kingdom</option>
+                        <option value="germany">Germany</option>
+                        <option value="france">France</option>
+                    </optgroup>
+                    <optgroup label="North America">
+                        <option value="usa">United States</option>
+                        <option value="canada">Canada</option>
+                    </optgroup>
+                </select>
+            </fieldset>
+
+            <!-- Fieldset 2: Groups account credentials -->
+            <fieldset>
+                <legend>Account Credentials</legend>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="user_name" required minlength="4" maxlength="12" placeholder="4-12 characters">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="user_password" required minlength="8" placeholder="Minimum 8 characters">
+            </fieldset>
+
+            <!-- Fieldset 3: Groups additional, more varied details -->
+            <fieldset>
+                <legend>Additional Details</legend>
+
+                <label>What are your interests?</label>
+                <input type="checkbox" id="interest1" name="interests" value="frontend">
+                <label for="interest1" class="inline-label">Frontend Development</label><br>
+                <input type="checkbox" id="interest2" name="interests" value="backend">
+                <label for="interest2" class="inline-label">Backend Development</label><br>
+                <input type="checkbox" id="interest3" name="interests" value="devops">
+                <label for="interest3" class="inline-label">DevOps</label><br><br>
+
+                <label for="profile_pic">Upload a Profile Picture:</label>
+                <input type="file" id="profile_pic" name="user_avatar" accept="image/png, image/jpeg">
+
+                <label for="skill_level">Your Skill Level (1 to 10):</label>
+                1 <input type="range" id="skill_level" name="user_skill" min="1" max="10" step="1"> 10<br><br>
+                
+                <label for="bio">Your Bio:</label>
+                <textarea id="bio" name="user_bio" rows="5" placeholder="Tell us a little about yourself..."></textarea>
+            </fieldset>
+
+            <!-- Form submission buttons -->
+            <div>
+                <button type="submit">Create Account</button>
+                <button type="reset">Clear Form</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <p style="text-align: center;">&copy; 2023 CodeConnect. All rights reserved.</p>
+
+
+</body>
+</html>
