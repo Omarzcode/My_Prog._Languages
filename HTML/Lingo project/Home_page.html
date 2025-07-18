@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingo - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* --- General & Body --- */
+        :root {
+            --primary-color-start: #FF416C;
+            --primary-color-end: #FF4B2B;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --background-color: #f7f8fa;
+            --white-color: #ffffff;
+            --border-color: #eee;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-dark);
+        }
+
+        /* --- Header / Navigation --- */
+        .main-header {
+            background-color: var(--white-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .header-logo img {
+            width: 90px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            margin: 0 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .main-nav a.active, .main-nav a:hover {
+            color: var(--text-dark);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 10px;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 40px;
+        }
+
+        .welcome-banner h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 40px 0;
+        }
+
+        .dashboard-layout {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* --- Languages Section (was Tutors Section) --- */
+        .languages-section {
+            flex: 3; /* Takes up more space */
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .section-header a {
+            text-decoration: none;
+            color: var(--primary-color-end);
+            font-weight: 500;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .language-card {
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .language-card img {
+            width: 50%;
+            height: 120px;
+            border-radius: 8px; /* Changed from 50% for rectangular images */
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .language-card .name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+        }
+
+        .start-now-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, var(--primary-color-start) 0%, var(--primary-color-end) 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .start-now-btn:hover {
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* --- Progress Section --- */
+        .progress-section {
+            flex: 1; /* Takes up less space */
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .progress-section h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        
+        .progress-bar-container {
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            width: 65%; /* Example progress */
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color-start) 0%, var(--primary-color-end) 100%);
+            border-radius: 5px;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .achievement-item .icon {
+            font-size: 1.5rem;
+            color: var(--primary-color-start);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .dashboard-layout {
+                flex-direction: column;
+            }
+            .main-header {
+                padding: 0 20px;
+            }
+            .main-nav {
+                display: none; /* Simple responsive solution */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 20px;
+            }
+            .welcome-banner h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="#"><img src="images/logo 3.png" alt="Lingo Logo"></a>
+        </div>
+        <nav class="main-nav">
+            <a href="#" class="active">Home</a>
+            <a href="#">My languages</a>
+            <a href="#">Quizzes</a>
+        </nav>
+        <div class="user-profile">
+            <span>Alex</span>
+            <!-- Placeholder for user's profile picture -->
+            <img src="https://placehold.co/100x100/EFEFEF/333333?text=A" alt="User Profile">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="welcome-banner">
+            <h1>Welcome back, Alex!</h1>
+        </div>
+
+        <div class="dashboard-layout">
+            
+            <!-- Languages Section -->
+            <section class="languages-section">
+                <div class="section-header">
+                    <h2>Choose a Language</h2>
+                </div>
+                <div class="language-grid">
+                    <!-- Language Card 1 -->
+                    <div class="language-card">
+                        <img src="images/spanish.png" alt="Learn Spanish">
+                        <h3 class="name">Spanish</h3>
+                        <a href="#" class="start-now-btn">Start Now</a>
+                    </div>
+                    <!-- Language Card 2 -->
+                    <div class="language-card">
+                        <img src="images/english.png" alt="Learn English">
+                        <h3 class="name">English</h3>
+                        <a href="#" class="start-now-btn">Start Now</a>
+                    </div>
+                    <!-- Language Card 3 -->
+                    <div class="language-card">
+                        <img src="images/arabic-language.png" alt="Learn Arabic">
+                        <h3 class="name">Arabic</h3>
+                        <a href="#" class="start-now-btn">Start Now</a>
+                    </div>
+                    <!-- Language Card 4 -->
+                    <div class="language-card">
+                        <img src="images/language-book.png" alt="Learn Japanese" style="width: 40%;">
+                        <h3 class="name">Japanese</h3>
+                        <a href="#" class="start-now-btn">Start Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <aside class="progress-section">
+                <h2>My Progress</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-label">
+                        <span>Spanish Fluency</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+                
+                <h3>Achievements</h3>
+                <ul class="achievements-list">
+                    <li class="achievement-item">
+                        <i class="fas fa-chalkboard-user icon"></i>
+                        <span>5 Lessons Completed</span>
+                    </li>
+                    <li class="achievement-item">
+                        <i class="fas fa-comments icon"></i>
+                        <span>First Conversation</span>
+                    </li>
+                    <li class="achievement-item">
+                        <i class="fas fa-fire icon"></i>
+                        <span>1-Week Streak</span>
+                    </li>
+                </ul>
+            </aside>
+
+        </div>
+    </main>
+
+</body>
+</html>
