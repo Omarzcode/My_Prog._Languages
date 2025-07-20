@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/login_page.css">
+    <link rel="stylesheet" href="../../styles/login_page.css">
 </head>
 <body>
 
@@ -15,12 +15,12 @@
 
     <div class="login-container">
         <!-- UPDATED: New logo with a transparent background -->
-        <img src="images/logo 3.png" alt="Lingo Logo" class="logo">
+        <img src="../../images/logo 3.png" alt="Lingo Logo" class="logo">
 
         <h1 id="greeting">Hello!</h1>
         <p class="subtitle">Welcome back to Lingo</p>
 
-        <form>
+        <form id="login-form">
             <div class="input-group">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required>
@@ -32,7 +32,7 @@
 
             <a href="Forget_Password.html" class="forgot-password">Forgot Password?</a>
 
-            <button type="submit" class="login-button" onclick="location.href='Home_page.html'">Continue Learning</button>
+            <button type="submit" class="login-button">Continue Learning</button>
         </form>
 
         <p class="signup-link">
@@ -68,6 +68,20 @@
 
             // Set an interval to call the changeGreeting function every 3 seconds
             setInterval(changeGreeting, 3000);
+        });
+       
+        // Find the form on the page
+        const form = document.getElementById('login-form');
+
+        // Add an event listener for the 'submit' event
+        form.addEventListener('submit', function(event) {
+            // 1. Prevent the form from doing its default behavior (reloading the page)
+            event.preventDefault();
+
+            // 2. If the form is valid, redirect to the confirmation page.
+            //    The browser already checked the 'required' fields for us.
+            //    Replace 'email-sent.html' with the actual name of your confirmation file.
+            window.location.href = '../Home_page.html'; 
         });
        
     </script>

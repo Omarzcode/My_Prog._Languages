@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lingo - Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <style>
-        /* --- General & Body --- */
+ /* --- General & Body --- */
         :root {
             --primary-color-start: #FF416C;
             --primary-color-end: #FF4B2B;
@@ -124,8 +112,10 @@
         }
 
         .language-card:hover {
+            scale: 1.03;
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.2s ease-in-out;
         }
 
         .language-card img {
@@ -224,6 +214,59 @@
             width: 30px;
             text-align: center;
         }
+        .user-profile-wrapper {
+    position: relative; /* This is the anchor for the dropdown */
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 120%; /* Position it just below the profile element */
+    right: 0;
+    width: 200px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    z-index: 1000;
+    
+    /* Animation styles */
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.profile-dropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.profile-dropdown ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.profile-dropdown li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+}
+
+.profile-dropdown li a:hover {
+    background-color: #f7f8fa;
+}
+
+.profile-dropdown hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 8px 0;
+}
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
@@ -246,99 +289,3 @@
                 font-size: 1.5rem;
             }
         }
-
-    </style>
-</head>
-<body>
-
-    <header class="main-header">
-        <div class="header-logo">
-            <a href="#"><img src="images/logo 3.png" alt="Lingo Logo"></a>
-        </div>
-        <nav class="main-nav">
-            <a href="#" class="active">Home</a>
-            <a href="#">My languages</a>
-            <a href="#">Quizzes</a>
-        </nav>
-        <div class="user-profile">
-            <span>Alex</span>
-            <!-- Placeholder for user's profile picture -->
-            <img src="https://placehold.co/100x100/EFEFEF/333333?text=A" alt="User Profile">
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="welcome-banner">
-            <h1>Welcome back, Alex!</h1>
-        </div>
-
-        <div class="dashboard-layout">
-            
-            <!-- Languages Section -->
-            <section class="languages-section">
-                <div class="section-header">
-                    <h2>Choose a Language</h2>
-                </div>
-                <div class="language-grid">
-                    <!-- Language Card 1 -->
-                    <div class="language-card">
-                        <img src="images/spanish.png" alt="Learn Spanish">
-                        <h3 class="name">Spanish</h3>
-                        <a href="#" class="start-now-btn">Start Now</a>
-                    </div>
-                    <!-- Language Card 2 -->
-                    <div class="language-card">
-                        <img src="images/english.png" alt="Learn English">
-                        <h3 class="name">English</h3>
-                        <a href="#" class="start-now-btn">Start Now</a>
-                    </div>
-                    <!-- Language Card 3 -->
-                    <div class="language-card">
-                        <img src="images/arabic-language.png" alt="Learn Arabic">
-                        <h3 class="name">Arabic</h3>
-                        <a href="#" class="start-now-btn">Start Now</a>
-                    </div>
-                    <!-- Language Card 4 -->
-                    <div class="language-card">
-                        <img src="images/language-book.png" alt="Learn Japanese" style="width: 40%;">
-                        <h3 class="name">Japanese</h3>
-                        <a href="#" class="start-now-btn">Start Now</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Progress Section -->
-            <aside class="progress-section">
-                <h2>My Progress</h2>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-label">
-                        <span>Spanish Fluency</span>
-                        <span>65%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill"></div>
-                    </div>
-                </div>
-                
-                <h3>Achievements</h3>
-                <ul class="achievements-list">
-                    <li class="achievement-item">
-                        <i class="fas fa-chalkboard-user icon"></i>
-                        <span>5 Lessons Completed</span>
-                    </li>
-                    <li class="achievement-item">
-                        <i class="fas fa-comments icon"></i>
-                        <span>First Conversation</span>
-                    </li>
-                    <li class="achievement-item">
-                        <i class="fas fa-fire icon"></i>
-                        <span>1-Week Streak</span>
-                    </li>
-                </ul>
-            </aside>
-
-        </div>
-    </main>
-
-</body>
-</html>
