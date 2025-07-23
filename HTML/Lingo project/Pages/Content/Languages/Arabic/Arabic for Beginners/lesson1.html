@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingo - Lesson 1: The Basics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- Link to the shared stylesheet -->
+    <link rel="stylesheet" href="../../../../../styles/Lesson_Stylesheet.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="../../../../Home_page.html"><img src="../../../../../images/logo 3.png" alt="Lingo Logo"></a>
+        </div>
+        <nav class="main-nav">
+            <a href="../../../../Home_page.html" class="active">Home</a>
+            <a href="#">My languages</a>
+            <a href="#">Quizzes</a>
+        </nav>
+        <div class="user-profile-wrapper">
+    <!-- This is your existing user profile div, now with an ID -->
+    <div class="user-profile" id="user-profile-toggle">
+        <span>Alex</span>
+        <img src="https://placehold.co/100x100/EFEFEF/333333?text=A" alt="User Profile">
+    </div>
+
+    <!-- 2. This is the new dropdown menu (hidden by default) -->
+    <div class="profile-dropdown" id="profile-dropdown">
+        <ul>
+            <li><a href="#"><i class="fa-solid fa-user"></i> Profile</a></li>
+            <hr>
+            <li><a href="../../../../../auth/Login_page.html"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+        </ul>
+    </div>
+</div>
+    </header>
+    <div class="course-wrapper" id="course-wrapper">
+        <!-- The corner button to toggle the sidebar -->
+        <button class="sidebar-toggle" id="sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Collapsible Lesson Sidebar -->
+        <aside class="lesson-sidebar" id="lesson-sidebar">
+            <!-- This title would change for each course -->
+            <h2>Beginner's Course</h2>
+            <ul class="lesson-list">
+                <li class="lesson-list-item active">
+                    <a href="lesson1.html"><i class="icon fa-solid fa-check-circle "style="color:rgb(17, 198, 17);"></i> Lesson 1: The Basics</a>
+                </li>
+                <li class="lesson-list-item">
+                    <a href="quiz1.html"><i class="icon fa-solid fa-play"></i> Quiz 1: The Basics</a>
+                </li>
+                <li class="lesson-list-item">
+                    <a href="lesson2.html"><i class="icon fa-solid fa-play"></i> Lesson 2: Common Phrases</a>
+                </li>
+                <li class="lesson-list-item">
+                    <a href="quiz2.html"><i class="icon fa-solid fa-play"></i> Quiz 2: Common Phrases</a>
+                </li>
+                <li class="lesson-list-item locked">
+                    <a href="#"><i class="icon fa-solid fa-lock"></i> Lesson 3: Nouns & Gender</a>
+                </li>
+                <li class="lesson-list-item locked">
+                    <a href="#"><i class="icon fa-solid fa-lock"></i> Lesson 4: Simple Verbs</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Lesson Content -->
+        <main class="lesson-content" id="lesson-content">
+            <div class="breadcrumbs">
+                <!-- These links would change for each course -->
+                <a href="../../../../Home_page.html">Home</a> &gt; <a href="../Arabic_Courses_Page.html">Language Courses</a> &gt; <span>Beginner's Course</span>
+            </div>
+            <!-- This title would change for each lesson -->
+            <h1>Lesson 1: The Basics</h1>
+            
+            <div class="video-placeholder">
+                <i class="fa-solid fa-play"></i>
+            </div>
+
+            <div class="lesson-actions">
+                <button class="action-btn btn-complete"><i class="fa-solid fa-check"></i> Mark as Complete</button>
+                <button class="action-btn btn-next"> <a href="lesson2.html" style="text-decoration: none; color: inherit;">Next Lesson</a> <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            
+            <h2>About This Lesson</h2>
+            <p>Welcome to your first lesson! Here, we will cover the absolute essentials of the language. This includes the alphabet, pronunciation of key sounds, and simple greetings like "Hello," "Goodbye," "Thank you," and "You're welcome." Mastering these fundamentals is the first and most important step on your journey to fluency. Replay the video as many times as you need!</p>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+            
+            <a href="quiz1.html" class="action-btn btn-quiz"><i class="fa-solid fa-file-pen"></i> Take the Quiz for this Lesson</a>
+        </main>
+    </div>
+    
+    <script>
+        // --- Sidebar Toggle Script ---
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const courseWrapper = document.getElementById('course-wrapper');
+
+        sidebarToggle.addEventListener('click', () => {
+            courseWrapper.classList.toggle('sidebar-open');
+        });
+
+        // --- Profile Dropdown Toggle Script ---
+        const userProfileToggle = document.getElementById('user-profile-toggle');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        if(userProfileToggle) {
+            userProfileToggle.addEventListener('click', function(event) {
+                event.stopPropagation();
+                profileDropdown.classList.toggle('show');
+            });
+        }
+
+        window.addEventListener('click', function(event) {
+            if (profileDropdown && profileDropdown.classList.contains('show')) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>

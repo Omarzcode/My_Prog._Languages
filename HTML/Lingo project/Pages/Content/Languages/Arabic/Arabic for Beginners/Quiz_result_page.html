@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingo - Quiz Results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- Make sure this path is correct for your file structure -->
+    <link rel="stylesheet" href="../../../../../styles/Lesson_Stylesheet.css">
+    <style>
+        /* Additional styles for the results page */
+        .results-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #eee;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        .results-icon {
+            font-size: 5rem;
+            color: #2ecc71; /* Green for success */
+            margin-bottom: 20px;
+        }
+        .results-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .score-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .feedback-text {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="../../../../Home_page.html"><img src="../../../../../images/logo 3.png" alt="Lingo Logo"></a>
+        </div>
+        <nav class="main-nav">
+            <a href="../../../../Home_page.html" class="active">Home</a>
+            <a href="#">My languages</a>
+            <a href="#">Quizzes</a>
+        </nav>
+        <div class="user-profile-wrapper">
+            <div class="user-profile" id="user-profile-toggle">
+                <span>Alex</span>
+                <img src="https://placehold.co/100x100/EFEFEF/333333?text=A" alt="User Profile">
+            </div>
+            <div class="profile-dropdown" id="profile-dropdown">
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-user"></i> Profile</a></li>
+                    <hr>
+                    <li><a href="../../../../../auth/Login_page.html"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="course-wrapper" id="course-wrapper">
+        <button class="sidebar-toggle" id="sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <aside class="lesson-sidebar" id="lesson-sidebar">
+            <h2>Beginner's Course</h2>
+            <ul class="lesson-list">
+                <li class="lesson-list-item completed">
+                    <a href="lesson-1.html"><i class="icon fa-solid fa-circle-check"></i> Lesson 1: The Basics</a>
+                </li>
+                <li class="lesson-list-item completed">
+                    <a href="lesson-2.html"><i class="icon fa-solid fa-circle-check"></i> Lesson 2: Common Phrases</a>
+                </li>
+                <li class="lesson-list-item completed">
+                    <a href="quiz-1.html"><i class="icon fa-solid fa-circle-check"></i> Quiz 1: The Basics</a>
+                </li>
+                <li class="lesson-list-item active"> <!-- Next lesson is now active -->
+                    <a href="#"><i class="icon fa-solid fa-play"></i> Lesson 3: Nouns & Gender</a>
+                </li>
+                <li class="lesson-list-item locked">
+                    <a href="#"><i class="icon fa-solid fa-lock"></i> Lesson 4: Simple Verbs</a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="lesson-content" id="lesson-content">
+            <div class="breadcrumbs">
+                <a href="../../../../Home_page.html">Home</a> &gt; <a href="../Arabic_Courses_Page.html">Language Courses</a> &gt; <span>Beginner's Course</span>
+            </div>
+            
+            <div class="results-container">
+                <i class="fa-solid fa-trophy results-icon"></i>
+                <h1>Quiz Complete!</h1>
+                <p class="score-text">Your Score: (100%)</p>
+                <p class="feedback-text">Excellent work! You've mastered the basics.</p>
+                <div class="lesson-actions" style="justify-content: center;">
+                    <a href="#" class="action-btn btn-next">Continue to Next Lesson</a>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+    
+    <script>
+        // --- Sidebar Toggle Script ---
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const courseWrapper = document.getElementById('course-wrapper');
+        sidebarToggle.addEventListener('click', () => {
+            courseWrapper.classList.toggle('sidebar-open');
+        });
+
+        // --- Profile Dropdown Toggle Script ---
+        const userProfileToggle = document.getElementById('user-profile-toggle');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        if(userProfileToggle) {
+            userProfileToggle.addEventListener('click', function(event) {
+                event.stopPropagation();
+                profileDropdown.classList.toggle('show');
+            });
+        }
+        window.addEventListener('click', function(event) {
+            if (profileDropdown && profileDropdown.classList.contains('show')) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+</body>
+</html>
